@@ -22,6 +22,7 @@ export type PackageItem = {
   speed_unit?: string | null;
   description?: string | null;
   buy_link?: string | null;
+  speed?: string | null;
   display_order?: number | null;
   is_active: boolean;
   promo_badge?: string | null;

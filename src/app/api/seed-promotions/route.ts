@@ -23,7 +23,7 @@ export async function GET() {
           speed: pkg.download_speed && pkg.upload_speed ? `${pkg.download_speed}/${pkg.upload_speed} ${pkg.speed_unit || 'Mbps'}` : null,
           priceNote: pkg.price_note,
           validity: pkg.contract_months ? `${pkg.contract_months}` : null,
-          imageUrl: pkg.header_image,
+          imageUrl: null,
           promoBadge: pkg.promo_badge,
           perks: pkg.perks || [],
           details: pkg.freebies || [],

@@ -8,8 +8,8 @@ const createPackageSchema = z.object({
   name: z.string().min(1, "Name is required"),
   imageUrl: z.string().url().optional().nullable(),
   freebie: z.any().optional().nullable(),
-  speed: z.string().min(1).optional(),
-  price: z.number().min(0).optional(),
+  speed: z.string().min(1, "Speed is required"),
+  price: z.number().min(0, "Price is required"),
   details: z.any().optional().nullable(),
   type: z.string().optional().nullable(),
   status: z.boolean().optional().default(true),
@@ -43,7 +43,18 @@ export async function POST(request: Request) {
     }
 
     const newPackage = await prisma.package.create({
-      data: validated,
+      data: {
+        code: validated.code,
+        name: validated.name,
+        imageUrl: validated.imageUrl ?? null,
+        freebie: validated.freebie ?? null,
+        speed: validated.speed,
+        price: validated.price,
+        details: validated.details ?? null,
+        type: validated.type,
+        status: validated.status ?? true,
+        displayOrder: validated.displayOrder ?? 0,
+      },
     });
 
     revalidatePath("/");
