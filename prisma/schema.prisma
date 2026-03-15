@@ -1,0 +1,144 @@
+// Prisma Schema for Telemart CMS
+// Prisma v7: Connection URLs are in prisma.config.ts, not here.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// Banner/Slide model for the homepage carousel
+model Banner {
+  id           String   @id @default(cuid())
+  title        String
+  description  String?
+  imageUrl     String
+  isActive     Boolean  @default(true)
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("banners")
+}
+
+model Package {
+  id          String   @id @default(cuid())
+  code        String   @unique // รหัสสินค้า (Item Code)
+  name        String   // โปร (e.g. โปรเน็ตบ้าน)
+  imageUrl    String?  // Image url for "โปร"
+  freebie     Json?    // ของแถม (e.g. ["netflix", "router"])
+  speed       String   // speed (e.g. 10Gbps)
+  price       Float    // ราคาบริการ
+  details     Json?    // รายละเอียด (e.g. ["item 1", "item 2"])
+  type        String?  // (optional) for filtering by tab (e.g. โปรเน็ตบ้าน, โปรเสริม) 
+  status      Boolean  @default(true) // Status (แสดง/ไม่แสดง)
+  displayOrder Int     @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("packages")
+}
+
+model SiteSettings {
+  id              String   @id @default("singleton")
+  logoUrl         String?  // โลโก้
+  phone           String?  // เบอร์โทร
+  email           String?  // อีเมล์
+  referralSystem  String?  // ระบบแนะนำ
+  description     String?  // เนื้อหาแนะนำเว็บไซต์
+  footerImageUrl  String?  // โลโก้ Footer
+  updatedAt       DateTime @updatedAt
+
+  @@map("site_settings")
+}
+
+/// Hero section content (singleton)
+model HeroSection {
+  id                  String   @id @default("singleton")
+  tagline             String?  // e.g. "TRUE TELEMART COMMUNICATION"
+  rotatingTexts       Json     @default("[]") // JSON string array
+  titlePrefix         String?  // e.g. "ที่สุดของ"
+  description         String?
+  ctaPrimaryLabel     String?
+  ctaPrimaryHref      String?
+  ctaSecondaryLabel   String?
+  ctaSecondaryHref    String?
+  backgroundImageUrl  String?
+  updatedAt           DateTime @updatedAt
+
+  @@map("hero_sections")
+}
+
+/// Category menu items shown in the header bar
+model MenuCategory {
+  id           String   @id @default(cuid())
+  iconUrl      String   // icon image URL
+  alt          String   // alt text for icon
+  text         String   // display text
+  path         String   // link path
+  displayOrder Int      @default(0)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("menu_categories")
+}
+
+/// Sales agent / team member
+model Agent {
+  id           String   @id @default(cuid())
+  name         String
+  phoneNumber  String
+  role         String
+  closedDeal   Int      @default(0)
+  photoUrl     String?
+  displayOrder Int      @default(0)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("agents")
+}
+
+/// Generic key-value section for flexible home page content
+/// sectionKey examples: "whyChoose", "processSteps", "packageOffersTopup",
+/// "packageOffersMonthly", "homeInternet", "promoBanner"
+model HomeSection {
+  id          String   @id @default(cuid())
+  sectionKey  String   @unique // unique key identifier
+  title       String?
+  subtitle    String?
+  imageUrl    String?
+  linkUrl     String?
+  jsonData    Json     @default("[]") // flexible JSON payload
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("home_sections")
+}
+
+/// Promotions for broadband, monthly, topup, solar pages
+model Promotion {
+  id           String   @id @default(cuid())
+  type         String   // "broadband" | "monthly" | "topup" | "solar"
+  categoryName String?  // ชื่อหมวดหมู่ (เช่น "เน็ตเพิ่มสปีด", "เน็ต+โทร")
+  name         String   // ชื่อโปร
+  price        Float    // ราคา
+  priceNote    String?  // หมายเหตุราคา (เช่น "ไม่รวม VAT")
+  speed        String?  // ความเร็ว / ข้อมูลหลัก
+  validity     String?  // ระยะเวลา (เช่น "30 วัน")
+  imageUrl     String?  // รูปภาพ
+  promoBadge   String?  // badge (เช่น "แนะนำ🔥")
+  perks        Json?    // [{text, imageUrl}]
+  details      Json?    // flexible JSON payload (freebies, extra fields)
+  status       Boolean  @default(true)
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([type])
+  @@map("promotions")
+}
