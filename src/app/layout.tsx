@@ -27,6 +27,15 @@ export const metadata: Metadata = {
   description:
     "Telemart Ubon ให้บริการ เน็ตบ้านทรูออนไลน์ ซิมมือถือทรู-ดีแทค แพ็กเกจความบันเทิง โซล่าเซลล์ครบวงจร และอุปกรณ์ไอที ราคาพิเศษ สมัครง่าย บริการถึงที่ ติดต่อทีมผู้เชี่ยวชาญได้ตลอด 24 ชั่วโมง",
   metadataBase: new URL("https://telemart-ubon.com"),
+  openGraph: {
+    siteName: "Telemart Ubon",
+    locale: "th_TH",
+    type: "website",
+    images: [{ url: "/logo.webp", width: 512, height: 512, alt: "Telemart Ubon" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 import { ThemeProvider } from "@mui/material/styles";
@@ -37,7 +46,6 @@ import CookieConsent from "../components/layout/CookieConsent";
 import { prisma } from "@/src/lib/prisma";
 
 
-//sdsds
 
 export default async function RootLayout({
   children,
@@ -52,8 +60,6 @@ export default async function RootLayout({
     // 2) เพิ่ม className จากตัวแปร prompt.className ตรงแท็ก html หรือ body
     <html lang="th" className={prompt.className} suppressHydrationWarning>
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

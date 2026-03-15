@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Box from "@mui/material/Box";
 import BannerTop from "./components/BannerTop";
 import PromotionBannerTopup from "./components/promotionBanner";
@@ -7,6 +8,30 @@ import StorePagination from "@/src/components/ui/StorePagination";
 import { prisma } from "@/src/lib/prisma";
 import { topupPackages } from "@/src/data/topup";
 import type { PackageItem } from "@/src/types/package";
+
+export const metadata: Metadata = {
+  title: "แพ็กเกจซิมเติมเงิน ทรู ดีแทค | Telemart Ubon",
+  description:
+    "แพ็กเกจซิมเติมเงิน ทรู ดีแทค เน็ตไม่อั้น โทรคุ้ม ราคาประหยัด สมัครง่าย เลือกแพ็กเกจเสริมได้ตามใจ Telemart Ubon อุบลราชธานี",
+  keywords: [
+    "ซิมเติมเงิน", "แพ็กเกจเติมเงิน", "ทรูมูฟ เติมเงิน", "ดีแทค เติมเงิน",
+    "เน็ตเติมเงิน", "Telemart", "ซิมเติมเงินอุบลราชธานี",
+  ],
+  openGraph: {
+    title: "แพ็กเกจซิมเติมเงิน ทรู ดีแทค | Telemart Ubon",
+    description: "ซิมเติมเงิน เน็ตไม่อั้น โทรคุ้ม ราคาประหยัด สมัครง่าย",
+    url: "https://telemart-ubon.com/topup",
+  },
+  twitter: {
+    title: "แพ็กเกจซิมเติมเงิน ทรู ดีแทค | Telemart Ubon",
+    description: "ซิมเติมเงิน เน็ตไม่อั้น โทรคุ้ม ราคาประหยัด สมัครง่าย",
+  },
+  alternates: { canonical: "https://telemart-ubon.com/topup" },
+  robots: {
+    index: true, follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+};
 
 async function fetchTopupPackages(
   page: number,

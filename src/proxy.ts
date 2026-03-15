@@ -80,6 +80,7 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
+   runtime: 'experimental-edge',
   matcher: [
     /*
      * Match all request paths except for:
@@ -91,3 +92,4 @@ export const config = {
     "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };
+

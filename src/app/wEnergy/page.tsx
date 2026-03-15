@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Box } from "@mui/material";
 import BannerEnergy from "./components/Banner";
 import Countshow from "./components/Count";
@@ -11,6 +12,30 @@ import StorePagination from "@/src/components/ui/StorePagination";
 import { prisma } from "@/src/lib/prisma";
 import type { SolarcellPackage } from "@/src/types/solar";
 import { solarcellPackages } from "@/src/data/solar";
+
+export const metadata: Metadata = {
+  title: "โซล่าเซลล์ พลังงานแสงอาทิตย์ ติดตั้งครบวงจร | Telemart Ubon",
+  description:
+    "บริการติดตั้งโซล่าเซลล์ครบวงจร ประหยัดค่าไฟสูงสุด 80% แผงโซล่าเซลล์คุณภาพสูง รับประกันยาวนาน บริการหลังการขาย Telemart Ubon อุบลราชธานี",
+  keywords: [
+    "โซล่าเซลล์", "พลังงานแสงอาทิตย์", "Solar Cell", "ติดตั้งโซล่าเซลล์",
+    "แผงโซล่าเซลล์", "ประหยัดค่าไฟ", "Telemart", "โซล่าเซลล์อุบลราชธานี",
+  ],
+  openGraph: {
+    title: "โซล่าเซลล์ พลังงานแสงอาทิตย์ ติดตั้งครบวงจร | Telemart Ubon",
+    description: "ติดตั้งโซล่าเซลล์ครบวงจร ประหยัดค่าไฟสูงสุด 80% รับประกันยาวนาน",
+    url: "https://telemart-ubon.com/wEnergy",
+  },
+  twitter: {
+    title: "โซล่าเซลล์ พลังงานแสงอาทิตย์ | Telemart Ubon",
+    description: "ติดตั้งโซล่าเซลล์ครบวงจร ประหยัดค่าไฟสูงสุด 80% รับประกันยาวนาน",
+  },
+  alternates: { canonical: "https://telemart-ubon.com/wEnergy" },
+  robots: {
+    index: true, follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+};
 
 async function fetchSolarPackages(
   page: number,

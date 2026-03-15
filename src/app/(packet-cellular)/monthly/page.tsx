@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Box from "@mui/material/Box";
 import BannerMonthy from "./components/Banner";
 import BannerproMonthy from "./components/bannerPromotion";
@@ -7,6 +8,30 @@ import StorePagination from "@/src/components/ui/StorePagination";
 import { prisma } from "@/src/lib/prisma";
 import { monthlyPackages } from "@/src/data/monthly";
 import type { PackageItem } from "@/src/types/package";
+
+export const metadata: Metadata = {
+  title: "แพ็กเกจซิมรายเดือน ทรู ดีแทค | Telemart Ubon",
+  description:
+    "แพ็กเกจซิมรายเดือน ทรู ดีแทค เปิดเบอร์ใหม่ ย้ายค่ายเบอร์เดิม เน็ตไม่อั้น โทรฟรี ราคาเริ่มต้น 199 บาท สมัครง่าย Telemart Ubon อุบลราชธานี",
+  keywords: [
+    "ซิมรายเดือน", "ทรูมูฟ", "ดีแทค", "เปิดเบอร์ใหม่", "ย้ายค่าย",
+    "แพ็กเกจรายเดือน", "เน็ตไม่อั้น", "Telemart", "ซิมรายเดือนอุบลราชธานี",
+  ],
+  openGraph: {
+    title: "แพ็กเกจซิมรายเดือน ทรู ดีแทค | Telemart Ubon",
+    description: "เปิดเบอร์ใหม่ ย้ายค่ายเบอร์เดิม เน็ตไม่อั้น โทรฟรี ราคาเริ่มต้น 199 บาท",
+    url: "https://telemart-ubon.com/monthly",
+  },
+  twitter: {
+    title: "แพ็กเกจซิมรายเดือน ทรู ดีแทค | Telemart Ubon",
+    description: "เปิดเบอร์ใหม่ ย้ายค่ายเบอร์เดิม เน็ตไม่อั้น โทรฟรี ราคาเริ่มต้น 199 บาท",
+  },
+  alternates: { canonical: "https://telemart-ubon.com/monthly" },
+  robots: {
+    index: true, follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+};
 
 async function fetchMonthlyPackages(
   page: number,

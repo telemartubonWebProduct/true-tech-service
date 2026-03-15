@@ -1,10 +1,34 @@
+import type { Metadata } from "next";
 import AllPackage, { PackageItem } from "./components/all-package";
 import Carousel, { SlideData } from "./components/Carousel";
 import { broadbandCarouselData, broadbandPackageData } from "@/src/data/boardband";
 import StoreSearch from "@/src/components/ui/StoreSearch";
 import StorePagination from "@/src/components/ui/StorePagination";
-
 import { prisma } from "@/src/lib/prisma";
+
+export const metadata: Metadata = {
+  title: "แพ็กเกจเน็ตบ้าน ทรูออนไลน์ ไฟเบอร์ | Telemart Ubon",
+  description:
+    "เปรียบเทียบแพ็กเกจเน็ตบ้านทรูออนไลน์ ไฟเบอร์ออพติก ความเร็วสูงสุด 2Gbps ราคาเริ่มต้น 399 บาท สมัครง่าย ติดตั้งฟรี พร้อมโปรโมชั่นพิเศษ Netflix, YouTube Premium จาก Telemart Ubon อุบลราชธานี",
+  keywords: [
+    "เน็ตบ้าน", "ทรูออนไลน์", "True Online", "ไฟเบอร์", "เน็ตบ้านอุบลราชธานี",
+    "แพ็กเกจเน็ตบ้าน", "สมัครเน็ตบ้าน", "เน็ตบ้านราคาถูก", "Telemart",
+  ],
+  openGraph: {
+    title: "แพ็กเกจเน็ตบ้าน ทรูออนไลน์ ไฟเบอร์ | Telemart Ubon",
+    description: "เปรียบเทียบแพ็กเกจเน็ตบ้านทรูออนไลน์ ไฟเบอร์ ราคาเริ่มต้น 399 บาท สมัครง่าย ติดตั้งฟรี",
+    url: "https://telemart-ubon.com/boardband",
+  },
+  twitter: {
+    title: "แพ็กเกจเน็ตบ้าน ทรูออนไลน์ | Telemart Ubon",
+    description: "เปรียบเทียบแพ็กเกจเน็ตบ้านทรูออนไลน์ ไฟเบอร์ ราคาเริ่มต้น 399 บาท สมัครง่าย ติดตั้งฟรี",
+  },
+  alternates: { canonical: "https://telemart-ubon.com/boardband" },
+  robots: {
+    index: true, follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+};
 
 async function fetchCarouselData(): Promise<SlideData[]> {
   return new Promise((resolve) => {
