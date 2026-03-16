@@ -90,7 +90,7 @@ export default function Navbar({ siteSettings }: { siteSettings?: any }) {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-10">
           <Link href="/home" className="flex items-center" aria-label="Telemart Ubon หน้าแรก">
             <Image
-              src={siteSettings?.logoUrl || "/logo.webp"}
+              src={siteSettings?.logoUrl || "/logo.png"}
               alt="Telemart Ubon Logo – เน็ตบ้านและมือถือ ทรู ดีแทค"
               width={140}
               height={45}

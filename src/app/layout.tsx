@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Telemart Ubon",
     locale: "th_TH",
     type: "website",
-    images: [{ url: "/logo.webp", width: 512, height: 512, alt: "Telemart Ubon" }],
+    images: [{ url: "/logo.png", width: 512, height: 512, alt: "Telemart Ubon" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -60,9 +60,6 @@ export default async function RootLayout({
     // 2) เพิ่ม className จากตัวแปร prompt.className ตรงแท็ก html หรือ body
     <html lang="th" className={prompt.className} suppressHydrationWarning>
       <head>
-
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         <Script
           async
