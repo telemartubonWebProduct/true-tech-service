@@ -71,6 +71,7 @@ export async function PUT(
     }
 
     revalidatePath("/");
+    revalidatePath("/home");
     revalidatePath("/boardband");
     revalidatePath("/monthly");
     revalidatePath("/topup");
@@ -107,6 +108,7 @@ export async function DELETE(
     }
 
     revalidatePath("/");
+    revalidatePath("/home");
     revalidatePath("/boardband");
     revalidatePath("/monthly");
     revalidatePath("/topup");

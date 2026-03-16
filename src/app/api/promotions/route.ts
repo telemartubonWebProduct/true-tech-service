@@ -73,6 +73,7 @@ export async function POST(request: Request) {
     });
 
     revalidatePath("/");
+    revalidatePath("/home");
     revalidatePath("/boardband");
     revalidatePath("/monthly");
     revalidatePath("/topup");

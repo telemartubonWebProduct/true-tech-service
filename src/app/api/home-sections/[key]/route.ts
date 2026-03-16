@@ -68,6 +68,7 @@ export async function PUT(
     });
 
     revalidatePath("/");
+    revalidatePath("/home");
     revalidatePath("/(dashboard)/dashboard/home-content", "page");
 
     return NextResponse.json(section);

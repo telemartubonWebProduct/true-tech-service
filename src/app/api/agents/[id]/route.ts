@@ -28,6 +28,7 @@ export async function PUT(
     });
 
     revalidatePath("/");
+    revalidatePath("/home");
     revalidatePath("/(dashboard)/dashboard/home-content", "page");
 
     return NextResponse.json(agent);
@@ -55,6 +56,7 @@ export async function DELETE(
     await prisma.agent.delete({ where: { id } });
     
     revalidatePath("/");
+    revalidatePath("/home");
     revalidatePath("/(dashboard)/dashboard/home-content", "page");
 
     return NextResponse.json({ success: true });

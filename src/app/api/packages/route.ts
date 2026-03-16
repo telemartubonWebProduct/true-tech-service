@@ -58,6 +58,7 @@ export async function POST(request: Request) {
     });
 
     revalidatePath("/");
+    revalidatePath("/home");
     revalidatePath("/(dashboard)/dashboard/home-content", "page");
 
     return NextResponse.json(newPackage, { status: 201 });

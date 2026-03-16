@@ -49,6 +49,7 @@ export async function PUT(request: Request) {
     });
 
     revalidatePath("/");
+    revalidatePath("/home");
     revalidatePath("/(dashboard)/dashboard/home-content", "page");
 
     return NextResponse.json(hero);
