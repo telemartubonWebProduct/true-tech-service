@@ -9,6 +9,7 @@ import TvIcon from "@mui/icons-material/Tv";
 import ShieldIcon from "@mui/icons-material/Shield";
 import type { PackageCategory, PackageItem, PerkItem } from "@/src/types/package";
 import { topupCategories as CATEGORIES, topupPackages as PACKAGES } from "@/src/data/topup";
+import { useSiteSettings } from "@/src/context/SiteSettingsContext";
 
 const renderIcon = (imageUrl?: string) => {
   const props = { className: "w-[18px] h-[18px] text-gray-500 mr-2" };
@@ -36,6 +37,7 @@ interface PackageListProps {
 
 export default function PackageList({ packages = PACKAGES }: PackageListProps) {
   const [activeCategoryId, setActiveCategoryId] = useState<number | "all">("all");
+  const { lineSupportUrl } = useSiteSettings();
 
   const displayedCategories =
     activeCategoryId === "all"
@@ -133,7 +135,7 @@ export default function PackageList({ packages = PACKAGES }: PackageListProps) {
                           </div>
                         )}
                       </div>
-                      <button className="bg-[#fb4646] hover:bg-[#e63b3b] text-white text-[14px] font-bold py-2 px-6 rounded-full transition-colors shadow-sm mb-1">
+                      <button onClick={() => window.open((pkg as any).buyUrl && (pkg as any).buyUrl !== "#" ? (pkg as any).buyUrl : lineSupportUrl, "_blank", "noopener,noreferrer")} className="bg-[#fb4646] hover:bg-[#e63b3b] text-white text-[14px] font-bold py-2 px-6 rounded-full transition-colors shadow-sm mb-1">
                         ซื้อเลย
                       </button>
                     </div>

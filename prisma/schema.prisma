@@ -33,6 +33,7 @@ model Package {
   price       Float    // ราคาบริการ
   details     Json?    // รายละเอียด (e.g. ["item 1", "item 2"])
   type        String?  // (optional) for filtering by tab (e.g. โปรเน็ตบ้าน, โปรเสริม) 
+  buyUrl      String?  // ลิงก์สำหรับซื้อ/สมัครแพ็กเกจเจาะจง
   status      Boolean  @default(true) // Status (แสดง/ไม่แสดง)
   displayOrder Int     @default(0)
   createdAt   DateTime @default(now())
@@ -49,6 +50,7 @@ model SiteSettings {
   referralSystem  String?  // ระบบแนะนำ
   description     String?  // เนื้อหาแนะนำเว็บไซต์
   footerImageUrl  String?  // โลโก้ Footer
+  lineSupportUrl  String?  // ลิงก์ Line หลักของเว็บ
   updatedAt       DateTime @updatedAt
 
   @@map("site_settings")
@@ -134,6 +136,7 @@ model Promotion {
   promoBadge   String?  // badge (เช่น "แนะนำ🔥")
   perks        Json?    // [{text, imageUrl}]
   details      Json?    // flexible JSON payload (freebies, extra fields)
+  buyUrl       String?  // ลิงก์สำหรับซื้อ/สมัครเฉพาะโปรโมชั่น
   status       Boolean  @default(true)
   displayOrder Int      @default(0)
   createdAt    DateTime @default(now())

@@ -12,6 +12,7 @@ import SpeedIcon from "@mui/icons-material/Speed";
 import HeaderMonthy from "./Header";
 import type { PackageCategory, PackageItem, PerkItem } from "@/src/types/package";
 import { monthlyCategories as CATEGORIES, monthlyPackages as PACKAGES } from "@/src/data/monthly";
+import { useSiteSettings } from "@/src/context/SiteSettingsContext";
 
 const renderIcon = (imageUrl?: string) => {
   const props = { className: "w-[18px] h-[18px] text-gray-500 mr-2" };
@@ -42,6 +43,7 @@ interface PromotionMonthyProps {
 export default function PromotionMonthy({ packages = PACKAGES }: PromotionMonthyProps) {
   const [activeTab, setActiveTab] = useState<string>("ทั้งหมด");
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const { lineSupportUrl } = useSiteSettings();
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
@@ -132,7 +134,7 @@ export default function PromotionMonthy({ packages = PACKAGES }: PromotionMonthy
                           </div>
                         )}
                       </div>
-                      <button className="bg-[#fb4646] hover:bg-[#e63b3b] text-white text-[14px] font-bold py-2.5 px-7 rounded-full transition-all duration-300 shadow-[0_4px_12px_rgba(251,70,70,0.2)] hover:shadow-[0_6px_16px_rgba(251,70,70,0.3)] active:scale-95 mb-0.5">
+                      <button onClick={() => window.open((pkg as any).buyUrl && (pkg as any).buyUrl !== "#" ? (pkg as any).buyUrl : lineSupportUrl, "_blank", "noopener,noreferrer")} className="bg-[#fb4646] hover:bg-[#e63b3b] text-white text-[14px] font-bold py-2.5 px-7 rounded-full transition-all duration-300 shadow-[0_4px_12px_rgba(251,70,70,0.2)] hover:shadow-[0_6px_16px_rgba(251,70,70,0.3)] active:scale-95 mb-0.5">
                         ซื้อเลย
                       </button>
                     </div>

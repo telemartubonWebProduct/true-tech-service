@@ -17,6 +17,7 @@ const createPromotionSchema = z.object({
   promoBadge: z.string().optional().nullable(),
   perks: z.any().optional().nullable(),
   details: z.any().optional().nullable(),
+  buyUrl: z.string().url().or(z.literal("")).optional().nullable(),
   status: z.boolean().optional().default(true),
   displayOrder: z.number().int().optional().default(0),
 });
@@ -69,7 +70,10 @@ export async function POST(request: Request) {
     const validated = createPromotionSchema.parse(body);
 
     const promotion = await prisma.promotion.create({
-      data: validated,
+      data: {
+        ...validated,
+        buyUrl: validated.buyUrl === "" ? null : validated.buyUrl,
+      },
     });
 
     revalidatePath("/");

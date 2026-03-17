@@ -16,6 +16,7 @@ const updatePromotionSchema = z.object({
   promoBadge: z.string().optional().nullable(),
   perks: z.any().optional().nullable(),
   details: z.any().optional().nullable(),
+  buyUrl: z.string().url().or(z.literal("")).optional().nullable(),
   status: z.boolean().optional(),
   displayOrder: z.number().int().optional(),
 });
@@ -58,6 +59,7 @@ export async function PUT(
     const dataToSave = {
       ...validated,
       imageUrl: validated.imageUrl === "" ? null : validated.imageUrl,
+      buyUrl: validated.buyUrl === "" ? null : validated.buyUrl,
     };
 
     const promotion = await prisma.promotion.update({

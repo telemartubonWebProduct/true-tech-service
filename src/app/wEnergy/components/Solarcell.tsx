@@ -8,14 +8,14 @@ import NightShelterIcon from '@mui/icons-material/NightShelter';
 import SettingsBackupRestoreIcon from '@mui/icons-material/SettingsBackupRestore';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { solarcellPackages as solarcellData } from "@/src/data/solar";
-import { lineSupport } from "@/src/context/line-path";
-
+import { useSiteSettings } from "@/src/context/SiteSettingsContext";
 
 interface PromotionSolarcellProps {
   packages?: typeof solarcellData;
 }
 
 export default function PromotionSolarcell({ packages = solarcellData }: PromotionSolarcellProps) {
+  const { lineSupportUrl } = useSiteSettings();
   return (
     <Box id="solar" className="flex flex-col items-center p-6">
       {/* Header Title Section */}
@@ -78,7 +78,10 @@ export default function PromotionSolarcell({ packages = solarcellData }: Promoti
 
             {/* Footer Section */}
             <Box className="text-center mt-3 mb-3">
-              <button onClick={() => window.open(lineSupport, "_blank", "noopener,noreferrer")}  className="bg-blue-900 text-white py-2 px-6 rounded-full text-[14px]">
+              <button 
+                onClick={() => window.open((solar as any).buyUrl && (solar as any).buyUrl !== "#" ? (solar as any).buyUrl : lineSupportUrl, "_blank", "noopener,noreferrer")}  
+                className="bg-blue-900 text-white py-2 px-6 rounded-full text-[14px]"
+              >
                 สอบถามข้อมูล
               </button>
             </Box>

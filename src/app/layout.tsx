@@ -44,8 +44,7 @@ import Footer from "../components/layout/Footer";
 import ScrollToTop from "../components/layout/ScrollToTop";
 import CookieConsent from "../components/layout/CookieConsent";
 import { prisma } from "@/src/lib/prisma";
-
-
+import { SiteSettingsProvider } from "@/src/context/SiteSettingsContext";
 
 export default async function RootLayout({
   children,
@@ -81,18 +80,20 @@ export default async function RootLayout({
         />
       </head>
       <body>
-        <AppRouterCacheProvider>
-          <CookieConsent />
-          <ThemeProvider theme={theme}>
-            <div className="min-h-screen flex flex-col">
-              <Navbar siteSettings={siteSettings} />
-              <ScrollToTop />
-              <main className="flex-1">{children}</main>
-              <Footer siteSettings={siteSettings} />
-            </div>
-            <ToastContainer position="bottom-right" theme="dark" />
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <SiteSettingsProvider settings={{ lineSupportUrl: siteSettings?.lineSupportUrl || undefined }}>
+          <AppRouterCacheProvider>
+            <CookieConsent />
+            <ThemeProvider theme={theme}>
+              <div className="min-h-screen flex flex-col">
+                <Navbar siteSettings={siteSettings} />
+                <ScrollToTop />
+                <main className="flex-1">{children}</main>
+                <Footer siteSettings={siteSettings} />
+              </div>
+              <ToastContainer position="bottom-right" theme="dark" />
+            </ThemeProvider>
+          </AppRouterCacheProvider>
+        </SiteSettingsProvider>
       </body>
     </html>
   );

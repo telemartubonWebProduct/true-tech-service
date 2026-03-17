@@ -5,11 +5,12 @@ import { Container, Typography, Link, Box } from "@mui/material";
 import { Grid } from "@mui/material";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { lineSupport } from "@/src/context/line-path";
+import { useSiteSettings } from "@/src/context/SiteSettingsContext";
 
 const Footer = ({ siteSettings }: { siteSettings?: any }) => {
   const pathname = usePathname();
   const isHiddenRoute = pathname?.startsWith("/dashboard") || pathname?.startsWith("/backend");
+  const { lineSupportUrl } = useSiteSettings();
 
   if (isHiddenRoute) return null;
 
@@ -60,7 +61,7 @@ const Footer = ({ siteSettings }: { siteSettings?: any }) => {
             </Typography>
             <ul>
               <li>
-                <Link href={lineSupport} target="_blank" rel="noopener noreferrer" color="inherit" className="hover:text-gray-400">
+                <Link href={lineSupportUrl} target="_blank" rel="noopener noreferrer" color="inherit" className="hover:text-gray-400">
                   Help Center
                 </Link>
               </li>

@@ -11,6 +11,7 @@ interface SiteSettings {
   email: string | null;
   description: string | null;
   footerImageUrl: string | null;
+  lineSupportUrl: string | null;
 }
 
 interface SiteSettingsFormProps {
@@ -25,6 +26,7 @@ export default function SiteSettingsForm({ initialSettings }: SiteSettingsFormPr
   const [phone, setPhone] = useState(initialSettings.phone || "");
   const [email, setEmail] = useState(initialSettings.email || "");
   const [description, setDescription] = useState(initialSettings.description || "");
+  const [lineSupportUrl, setLineSupportUrl] = useState(initialSettings.lineSupportUrl || "");
 
   // Files & Previews
   const logoInputRef = useRef<HTMLInputElement>(null);
@@ -87,6 +89,7 @@ export default function SiteSettingsForm({ initialSettings }: SiteSettingsFormPr
         phone: phone || "",
         email: email || "",
         description: description || "",
+        lineSupportUrl: lineSupportUrl || "",
       };
 
       const res = await fetch("/api/settings", {
@@ -255,6 +258,17 @@ export default function SiteSettingsForm({ initialSettings }: SiteSettingsFormPr
             className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500/50 focus:border-red-500/50 transition-all text-sm"
             placeholder="e.g., contact@telemart.com"
           />
+        </div>
+        <div className="md:col-span-2">
+          <label className="block text-sm font-medium text-gray-300 mb-2">Line Support URL (ลิงก์ติดต่อส่วนกลาง)</label>
+          <input
+            type="url"
+            value={lineSupportUrl}
+            onChange={(e) => setLineSupportUrl(e.target.value)}
+            className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500/50 focus:border-red-500/50 transition-all text-sm"
+            placeholder="e.g., https://lin.ee/xxxxxx"
+          />
+          <p className="mt-1 text-xs text-gray-400">ลิงก์นี้จะใช้เป็นค่าเริ่มต้นสำหรับปุ่ม "สนใจสมัครบริการ" หากแพ็กเกจนั้นๆ ไม่ได้ระบุลิงก์ไว้</p>
         </div>
       </div>
 

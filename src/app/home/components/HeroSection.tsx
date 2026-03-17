@@ -3,6 +3,7 @@ import { Box, Button, Container, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { heroContent as defaultHero } from "@/src/data/home";
+import { useSiteSettings } from "@/src/context/SiteSettingsContext";
 
 const MotionBox = motion(Box);
 
@@ -36,6 +37,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ heroData }: HeroSectionProps) {
   const isExternalLink = (href?: string | null) => !!href && /^https?:\/\//i.test(href);
+  const { lineSupportUrl } = useSiteSettings();
 
   // Merge DB data with static defaults
   const tagline = heroData?.tagline ?? defaultHero.tagline;
@@ -162,9 +164,10 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
               whileTap={{ scale: 0.97 }}
               variant="contained"
               onClick={() => {
-                if (ctaPrimaryHref) {
-                  if (isExternalLink(ctaPrimaryHref)) window.open(ctaPrimaryHref, "_blank", "noopener,noreferrer");
-                  else window.location.href = ctaPrimaryHref;
+                const finalHref = (!ctaPrimaryHref || ctaPrimaryHref === "#") ? lineSupportUrl : ctaPrimaryHref;
+                if (finalHref) {
+                  if (isExternalLink(finalHref)) window.open(finalHref, "_blank", "noopener,noreferrer");
+                  else window.location.href = finalHref;
                 }
               }}
               className="rounded-full px-8 py-2 text-sm font-semibold uppercase tracking-wide shadow-lg shadow-red-500/40"
@@ -182,9 +185,10 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
                 whileTap={{ scale: 0.97 }}
                 variant="outlined"
                 onClick={() => {
-                  if (ctaSecondaryHref) {
-                    if (isExternalLink(ctaSecondaryHref)) window.open(ctaSecondaryHref, "_blank", "noopener,noreferrer");
-                    else window.location.href = ctaSecondaryHref;
+                  const finalHref = (!ctaSecondaryHref || ctaSecondaryHref === "#") ? lineSupportUrl : ctaSecondaryHref;
+                  if (finalHref) {
+                    if (isExternalLink(finalHref)) window.open(finalHref, "_blank", "noopener,noreferrer");
+                    else window.location.href = finalHref;
                   }
                 }}
                 className="rounded-full px-8 py-2 text-sm font-semibold uppercase tracking-wide shadow-md"

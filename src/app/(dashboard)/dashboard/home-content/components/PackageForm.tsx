@@ -14,6 +14,7 @@ interface Package {
   price: number;
   details: any | null; // Changed to any for JSON
   type: string | null;
+  buyUrl?: string | null;
   status: boolean;
   displayOrder: number;
 }
@@ -33,6 +34,7 @@ export default function PackageForm({ pkg, onSuccess, onCancel }: PackageFormPro
   const [speed, setSpeed] = useState(pkg?.speed || "");
   const [price, setPrice] = useState(pkg?.price?.toString() || "");
   const [type, setType] = useState(pkg?.type || "โปรเน็ตบ้าน");
+  const [buyUrl, setBuyUrl] = useState(pkg?.buyUrl || "");
   const [status, setStatus] = useState(pkg?.status ?? true);
   const [displayOrder, setDisplayOrder] = useState(pkg?.displayOrder || 0);
 
@@ -112,6 +114,7 @@ export default function PackageForm({ pkg, onSuccess, onCancel }: PackageFormPro
         price: parseFloat(price) || 0,
         details: details.filter(d => d.trim() !== ""),
         type: type || null,
+        buyUrl: buyUrl || "",
         status,
         displayOrder,
       };
@@ -220,6 +223,18 @@ export default function PackageForm({ pkg, onSuccess, onCancel }: PackageFormPro
             <option value="เน็ตซิมรายเดือน">เน็ตซิมรายเดือน</option>
             <option value="ไวไฟฮอตสปอต">ไวไฟฮอตสปอต</option>
           </select>
+        </div>
+
+        {/* Buy URL */}
+        <div className="md:col-span-2">
+          <label className="block text-sm font-medium text-gray-300 mb-1">Buy / Apply URL (ลิงก์สมัครบริการ)</label>
+          <input
+            type="url"
+            value={buyUrl}
+            onChange={(e) => setBuyUrl(e.target.value)}
+            className="w-full px-3 py-2 bg-gray-800/50 border border-gray-700 rounded-xl text-white text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+            placeholder="e.g. https://lin.ee/xxxxxx (ปล่อยว่างไว้เพื่อใช้ค่าเริ่มต้นเว็บ)"
+          />
         </div>
 
         {/* Name & Speed */}

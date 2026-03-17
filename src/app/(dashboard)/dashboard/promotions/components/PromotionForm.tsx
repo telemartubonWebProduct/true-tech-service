@@ -17,6 +17,7 @@ interface Promotion {
   promoBadge: string | null;
   perks: unknown | null;
   details: unknown | null;
+  buyUrl?: string | null;
   status: boolean;
   displayOrder: number;
 }
@@ -40,6 +41,7 @@ export default function PromotionForm({ promotion, activeType, onSuccess, onCanc
   const [speed, setSpeed] = useState(promotion?.speed || "");
   const [validity, setValidity] = useState(promotion?.validity || "");
   const [promoBadge, setPromoBadge] = useState(promotion?.promoBadge || "");
+  const [buyUrl, setBuyUrl] = useState(promotion?.buyUrl || "");
   const [status, setStatus] = useState(promotion?.status ?? true);
   const [displayOrder, setDisplayOrder] = useState(promotion?.displayOrder || 0);
 
@@ -130,6 +132,7 @@ export default function PromotionForm({ promotion, activeType, onSuccess, onCanc
         promoBadge: promoBadge || null,
         perks: perks.filter((p) => p.text.trim() !== ""),
         details: details.filter((d) => d.trim() !== ""),
+        buyUrl: buyUrl || "",
         status,
         displayOrder,
       };
@@ -259,6 +262,18 @@ export default function PromotionForm({ promotion, activeType, onSuccess, onCanc
             onChange={(e) => setPromoBadge(e.target.value)}
             className="w-full px-3 py-2 bg-gray-800/50 border border-gray-700 rounded-xl text-white text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
             placeholder="e.g. แนะนำ🔥"
+          />
+        </div>
+
+        {/* Buy URL */}
+        <div className="md:col-span-2">
+          <label className="block text-sm font-medium text-gray-300 mb-1">Buy / Apply URL (ลิงก์สมัครบริการเจาะจง)</label>
+          <input
+            type="url"
+            value={buyUrl}
+            onChange={(e) => setBuyUrl(e.target.value)}
+            className="w-full px-3 py-2 bg-gray-800/50 border border-gray-700 rounded-xl text-white text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+            placeholder="e.g. https://lin.ee/xxxxxx (ปล่อยว่างไว้เพื่อใช้ค่าเริ่มต้นเว็บ)"
           />
         </div>
 

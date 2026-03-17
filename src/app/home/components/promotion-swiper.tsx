@@ -19,7 +19,7 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMemo, useState, useRef, MouseEvent, useEffect } from "react";
-import { lineSupport } from "@/src/context/line-path";
+import { useSiteSettings } from "@/src/context/SiteSettingsContext";
 
 function formatPriceTHB(value: number) {
   return new Intl.NumberFormat("th-TH").format(value);
@@ -313,6 +313,7 @@ export default function PromotionSwiper({ packages = [] }: PromotionSwiperProps)
 }
 
 function PromoCard({ pkg }: { pkg: any }) {
+  const { lineSupportUrl } = useSiteSettings();
   const header = useMemo(() => {
     const pName = pkg.name || "";
     if (pName.toLowerCase().includes("netflix")) {
@@ -465,7 +466,7 @@ function PromoCard({ pkg }: { pkg: any }) {
         <Button
           fullWidth
           variant="contained"
-          href={lineSupport}
+          href={(pkg.buyUrl && pkg.buyUrl !== "#") ? pkg.buyUrl : lineSupportUrl}
           target="_blank"
           sx={{
             mt: 3,

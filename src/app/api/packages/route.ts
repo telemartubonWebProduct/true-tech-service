@@ -12,6 +12,7 @@ const createPackageSchema = z.object({
   price: z.number().min(0, "Price is required"),
   details: z.any().optional().nullable(),
   type: z.string().optional().nullable(),
+  buyUrl: z.string().url().or(z.literal("")).optional().nullable(),
   status: z.boolean().optional().default(true),
   displayOrder: z.number().int().optional().default(0),
 });
@@ -52,6 +53,7 @@ export async function POST(request: Request) {
         price: validated.price,
         details: validated.details ?? null,
         type: validated.type,
+        buyUrl: validated.buyUrl === "" ? null : validated.buyUrl,
         status: validated.status ?? true,
         displayOrder: validated.displayOrder ?? 0,
       },

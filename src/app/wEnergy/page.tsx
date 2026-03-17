@@ -79,6 +79,7 @@ async function fetchSolarPackages(
           arae: (perks[1] as any)?.text || (perks[1] as string) || "",
           scope: (perks[2] as any)?.text || (perks[2] as string) || "",
           karantee: (perks[3] as any)?.text || (perks[3] as string) || "",
+          buyUrl: p.buyUrl || null,
         };
       });
       return { data, totalPages };

@@ -74,6 +74,7 @@ async function fetchTopupPackages(
           perks: Array.isArray(p.perks) ? p.perks : [],
           description: null,
           is_active: p.status,
+          buyUrl: p.buyUrl || null,
           display_order: p.displayOrder,
         } as PackageItem;
       });

@@ -77,6 +77,7 @@ async function fetchMonthlyPackages(
           description: null,
           promo_badge: p.promoBadge || undefined,
           is_active: p.status,
+          buyUrl: p.buyUrl || null,
           display_order: p.displayOrder,
         } as PackageItem;
       });

@@ -14,6 +14,7 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useMemo, useState, useRef, MouseEvent, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSiteSettings } from "@/src/context/SiteSettingsContext";
 
 export type PerkItem = { text: string; imageUrl?: string };
 
@@ -129,6 +130,7 @@ function formatPriceTHB(value: number) {
 }
 
 function PackageCard({ pkg }: { pkg: PackageItem }) {
+  const { lineSupportUrl } = useSiteSettings();
   const header = useMemo(() => {
     if (pkg.header_theme === "netflix")
       return {
@@ -586,7 +588,7 @@ function PackageCard({ pkg }: { pkg: PackageItem }) {
         <Box component={motion.div} whileTap={{ scale: 0.96 }} sx={{ mt: 3 }}>
           <Button
             fullWidth
-            href={pkg.buy_link ?? "#"}
+            href={(pkg.buy_link && pkg.buy_link !== "#") ? pkg.buy_link : lineSupportUrl}
             variant="contained"
             disableElevation
             sx={{

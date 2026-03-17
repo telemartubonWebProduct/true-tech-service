@@ -10,6 +10,7 @@ const updateSettingsSchema = z.object({
   referralSystem: z.string().optional().nullable(),
   description: z.string().optional().nullable(),
   footerImageUrl: z.string().url().or(z.literal("")).optional().nullable(),
+  lineSupportUrl: z.string().url().or(z.literal("")).optional().nullable(),
 });
 
 export async function GET() {

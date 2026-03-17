@@ -13,6 +13,7 @@ const updatePackageSchema = z.object({
   price: z.number().min(0).optional(),
   details: z.any().optional().nullable(),
   type: z.string().optional().nullable(),
+  buyUrl: z.string().url().or(z.literal("")).optional().nullable(),
   status: z.boolean().optional(),
   displayOrder: z.number().int().optional(),
 });
@@ -62,6 +63,7 @@ export async function PUT(
     const dataToSave = {
       ...validated,
       imageUrl: validated.imageUrl === "" ? null : validated.imageUrl,
+      buyUrl: validated.buyUrl === "" ? null : validated.buyUrl,
     };
 
     const pkg = await prisma.package.update({

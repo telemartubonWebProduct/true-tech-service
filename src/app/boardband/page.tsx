@@ -92,7 +92,7 @@ async function fetchPackageData(
           upload_speed: uSpeed || null,
           speed_unit: sUnit,
           description: null,
-          buy_link: "#",
+          buy_link: p.buyUrl || "#",
           display_order: p.displayOrder,
           is_active: p.status,
           promo_badge: p.promoBadge,
