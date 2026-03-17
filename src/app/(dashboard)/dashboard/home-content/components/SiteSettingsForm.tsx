@@ -75,8 +75,8 @@ export default function SiteSettingsForm({ initialSettings }: SiteSettingsFormPr
     setSuccessMsg(null);
 
     try {
-      let finalLogoUrl = logoPreview ? initialSettings.logoUrl : null;
-      let finalFooterUrl = footerPreview ? initialSettings.footerImageUrl : null;
+      let finalLogoUrl = logoPreview && !logoPreview.startsWith("blob:") ? logoPreview : null;
+      let finalFooterUrl = footerPreview && !footerPreview.startsWith("blob:") ? footerPreview : null;
 
       if (logoFile) finalLogoUrl = await uploadBannerImage(logoFile);
       if (footerFile) finalFooterUrl = await uploadBannerImage(footerFile);
@@ -138,10 +138,10 @@ export default function SiteSettingsForm({ initialSettings }: SiteSettingsFormPr
             // Clear file if they are typing a URL
             if (type === "logo") {
               setLogoFile(null);
-              setLogoPreview(url || initialSettings.logoUrl);
+              setLogoPreview(url);
             } else {
               setFooterFile(null);
-              setFooterPreview(url || initialSettings.footerImageUrl);
+              setFooterPreview(url);
             }
           }}
           placeholder="https://example.com/logo.png"

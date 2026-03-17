@@ -87,7 +87,7 @@ export default function PackageForm({ pkg, onSuccess, onCancel }: PackageFormPro
 
   const removeImage = () => {
     setImageFile(null);
-    setImagePreview(isEditing ? pkg?.imageUrl || null : null);
+    setImagePreview(null);
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
@@ -158,7 +158,7 @@ export default function PackageForm({ pkg, onSuccess, onCancel }: PackageFormPro
             onChange={(e) => {
               const url = e.target.value;
               setImageFile(null);
-              setImagePreview(url || (isEditing ? pkg?.imageUrl || null : null));
+              setImagePreview(url);
             }}
             placeholder="https://... or click upload below"
           />

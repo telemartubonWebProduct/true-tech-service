@@ -35,6 +35,8 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ heroData }: HeroSectionProps) {
+  const isExternalLink = (href?: string | null) => !!href && /^https?:\/\//i.test(href);
+
   // Merge DB data with static defaults
   const tagline = heroData?.tagline ?? defaultHero.tagline;
   const texts: string[] =
@@ -159,7 +161,12 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.97 }}
               variant="contained"
-              href={ctaPrimaryHref}
+              onClick={() => {
+                if (ctaPrimaryHref) {
+                  if (isExternalLink(ctaPrimaryHref)) window.open(ctaPrimaryHref, "_blank", "noopener,noreferrer");
+                  else window.location.href = ctaPrimaryHref;
+                }
+              }}
               className="rounded-full px-8 py-2 text-sm font-semibold uppercase tracking-wide shadow-lg shadow-red-500/40"
               sx={{
                 backgroundImage: "linear-gradient(90deg, #f97316, #ef4444, #fb923c)",
@@ -174,7 +181,12 @@ export default function HeroSection({ heroData }: HeroSectionProps) {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
                 variant="outlined"
-                href={ctaSecondaryHref}
+                onClick={() => {
+                  if (ctaSecondaryHref) {
+                    if (isExternalLink(ctaSecondaryHref)) window.open(ctaSecondaryHref, "_blank", "noopener,noreferrer");
+                    else window.location.href = ctaSecondaryHref;
+                  }
+                }}
                 className="rounded-full px-8 py-2 text-sm font-semibold uppercase tracking-wide shadow-md"
                 sx={{
                   borderColor: "rgba(255,255,255,0.6)",

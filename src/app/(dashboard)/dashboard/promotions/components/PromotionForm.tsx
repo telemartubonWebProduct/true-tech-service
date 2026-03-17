@@ -15,8 +15,8 @@ interface Promotion {
   validity: string | null;
   imageUrl: string | null;
   promoBadge: string | null;
-  perks: any | null;
-  details: any | null;
+  perks: unknown | null;
+  details: unknown | null;
   status: boolean;
   displayOrder: number;
 }
@@ -102,7 +102,7 @@ export default function PromotionForm({ promotion, activeType, onSuccess, onCanc
 
   const removeImage = () => {
     setImageFile(null);
-    setImagePreview(isEditing ? promotion?.imageUrl || null : null);
+    setImagePreview(null);
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
@@ -176,7 +176,7 @@ export default function PromotionForm({ promotion, activeType, onSuccess, onCanc
             onChange={(e) => {
               const url = e.target.value;
               setImageFile(null);
-              setImagePreview(url || (isEditing ? promotion?.imageUrl || null : null));
+              setImagePreview(url);
             }}
             placeholder="https://... หรือคลิกอัปโหลดด้านล่าง"
           />

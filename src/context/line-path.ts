@@ -1,1 +1,1 @@
-export const lineSupport = "https://lin.ee/blqnOJow"
+export const lineSupport = "https://line.me/R/ti/p/@telemartubon";

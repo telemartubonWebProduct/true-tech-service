@@ -88,7 +88,7 @@ export default function BannerForm({
 
   const removeImage = () => {
     setImageFile(null);
-    setImagePreview(isEditing ? banner?.imageUrl || null : null);
+    setImagePreview(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
@@ -196,7 +196,7 @@ export default function BannerForm({
             onChange={(e) => {
               const url = e.target.value;
               setImageFile(null); // Clear file
-              setImagePreview(url || (isEditing ? banner?.imageUrl || null : null));
+              setImagePreview(url);
               setError(null);
             }}
             placeholder="https://example.com/image.jpg"

@@ -19,6 +19,7 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMemo, useState, useRef, MouseEvent, useEffect } from "react";
+import { lineSupport } from "@/src/context/line-path";
 
 function formatPriceTHB(value: number) {
   return new Intl.NumberFormat("th-TH").format(value);
@@ -464,7 +465,7 @@ function PromoCard({ pkg }: { pkg: any }) {
         <Button
           fullWidth
           variant="contained"
-          href={"https://line.me/R/ti/p/@telemartubon"}
+          href={lineSupport}
           target="_blank"
           sx={{
             mt: 3,

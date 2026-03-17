@@ -78,7 +78,7 @@ export default function PromotionSolarcell({ packages = solarcellData }: Promoti
 
             {/* Footer Section */}
             <Box className="text-center mt-3 mb-3">
-              <button onClick={() => window.location.href = lineSupport}  className="bg-blue-900 text-white py-2 px-6 rounded-full text-[14px]">
+              <button onClick={() => window.open(lineSupport, "_blank", "noopener,noreferrer")}  className="bg-blue-900 text-white py-2 px-6 rounded-full text-[14px]">
                 สอบถามข้อมูล
               </button>
             </Box>

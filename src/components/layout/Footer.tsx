@@ -60,7 +60,7 @@ const Footer = ({ siteSettings }: { siteSettings?: any }) => {
             </Typography>
             <ul>
               <li>
-                <Link href={lineSupport} color="inherit" className="hover:text-gray-400">
+                <Link href={lineSupport} target="_blank" rel="noopener noreferrer" color="inherit" className="hover:text-gray-400">
                   Help Center
                 </Link>
               </li>
