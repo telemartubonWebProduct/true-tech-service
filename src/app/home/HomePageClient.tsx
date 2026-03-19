@@ -64,17 +64,17 @@ export default function HomePageClient({
         />
 
         {/* Add-on package offers */}
-        <section aria-label="แพ็กเกจเสริมสำหรับคุณ">
+        {/* <section aria-label="แพ็กเกจเสริมสำหรับคุณ">
           <PackageOffers
             topupData={homeSections?.packageOffersTopup?.jsonData}
             monthlyData={homeSections?.packageOffersMonthly?.jsonData}
           />
-        </section>
+        </section> */}
 
         {/* Home internet section */}
-        <section aria-label="บริการเน็ตบ้าน">
+        {/* <section aria-label="บริการเน็ตบ้าน">
           <HomeInternet homeInternetData={homeSections?.homeInternet?.jsonData} />
-        </section>
+        </section> */}
 
         {/* Promotional banner */}
         <section aria-label="แบนเนอร์โปรโมชัน">
