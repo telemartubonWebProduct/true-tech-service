@@ -54,14 +54,14 @@ interface AgentFromDB {
 
 interface SalerServiceProps {
   agents?: AgentFromDB[];
-  whyChooseData?: any[];
-  processStepsData?: any[];
+  whyChooseData?: { iconName: string; title: string; desc: string }[];
+  processStepsData?: { num: number; iconName: string; title: string; desc: string }[];
 }
 
 export default function SalerService({ agents, whyChooseData, processStepsData }: SalerServiceProps) {
-  const agentSection = useInView(0.1);
-  const whySection = useInView(0.1);
-  const stepsSection = useInView(0.1);
+  const { ref: agentRef, inView: agentInView } = useInView(0.1);
+  const { ref: whyRef, inView: whyInView } = useInView(0.1);
+  const { ref: stepsRef, inView: stepsInView } = useInView(0.1);
 
   // Use DB data with static fallbacks
   const agentsList = agents && agents.length > 0
@@ -113,28 +113,18 @@ export default function SalerService({ agents, whyChooseData, processStepsData }
       </div>
 
       {/* ── Agent Cards ── */}
-      <div ref={agentSection.ref} className="max-w-6xl mx-auto px-4 -mt-24 relative z-10 w-full mb-16">
+      <div ref={agentRef} className="max-w-6xl mx-auto px-4 -mt-24 relative z-10 w-full mb-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
           {agentsList.map((agent, i) => (
             <div
               key={agent.id}
               className="relative flex flex-col items-center bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.08)] transform transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_40px_rgba(224,43,32,0.15)] hover:border-red-100 group"
               style={{
-                opacity: agentSection.inView ? 1 : 0,
-                transform: agentSection.inView ? 'translateY(0)' : 'translateY(40px)',
+                opacity: agentInView ? 1 : 0,
+                transform: agentInView ? 'translateY(0)' : 'translateY(40px)',
                 transition: `opacity 0.6s ease ${i * 0.15}s, transform 0.6s ease ${i * 0.15}s, box-shadow 0.4s ease, border-color 0.4s ease`,
               }}
             >
-              <div className="absolute top-5 right-5 z-20 bg-zinc-900 text-white pl-3 pr-1 py-1 rounded-full shadow-lg flex items-center gap-3 border border-zinc-800 transition-transform duration-300 group-hover:scale-105">
-                <span className="text-[10px] font-semibold tracking-wider text-zinc-300">ปิดจบงานแล้ว</span>
-                <span className="relative flex items-center justify-center">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75 animate-ping"></span>
-                  <span className="relative bg-[#e02b20] text-white px-2.5 py-0.5 rounded-full text-xs font-bold shadow-inner">
-                    {agent.closedDeal}
-                  </span>
-                </span>
-              </div>
-
               <div className="w-full h-72 md:h-80 relative bg-zinc-50 flex items-end justify-center pt-8 border-b border-gray-100">
                 <Image
                   src={agent.photo || '/assets/mock/agent.png'}
@@ -168,12 +158,12 @@ export default function SalerService({ agents, whyChooseData, processStepsData }
       </div>
 
       {/* ── Why Choose Section ── */}
-      <div ref={whySection.ref} className="max-w-6xl mx-auto px-4 mt-16 text-center w-full">
+      <div ref={whyRef} className="max-w-6xl mx-auto px-4 mt-16 text-center w-full">
         <p
           className="text-sm md:text-base font-semibold tracking-widest text-[#e02b20] uppercase mb-2"
           style={{
-            opacity: whySection.inView ? 1 : 0,
-            transform: whySection.inView ? 'translateY(0)' : 'translateY(20px)',
+            opacity: whyInView ? 1 : 0,
+            transform: whyInView ? 'translateY(0)' : 'translateY(20px)',
             transition: 'opacity 0.5s ease, transform 0.5s ease',
           }}
         >
@@ -182,8 +172,8 @@ export default function SalerService({ agents, whyChooseData, processStepsData }
         <h3
           className="text-2xl md:text-4xl font-extrabold text-zinc-900 mb-16 tracking-tight"
           style={{
-            opacity: whySection.inView ? 1 : 0,
-            transform: whySection.inView ? 'translateY(0)' : 'translateY(20px)',
+            opacity: whyInView ? 1 : 0,
+            transform: whyInView ? 'translateY(0)' : 'translateY(20px)',
             transition: 'opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s',
           }}
         >
@@ -191,13 +181,13 @@ export default function SalerService({ agents, whyChooseData, processStepsData }
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-          {whyChooseItems.map((item: any, i: number) => (
+          {whyChooseItems.map((item: { iconName: string; title: string; desc: string }, i: number) => (
             <div
               key={i}
               className="flex flex-col items-center group"
               style={{
-                opacity: whySection.inView ? 1 : 0,
-                transform: whySection.inView ? 'translateY(0)' : 'translateY(30px)',
+                opacity: whyInView ? 1 : 0,
+                transform: whyInView ? 'translateY(0)' : 'translateY(30px)',
                 transition: `opacity 0.55s ease ${0.2 + i * 0.15}s, transform 0.55s ease ${0.2 + i * 0.15}s`,
               }}
             >
@@ -212,12 +202,12 @@ export default function SalerService({ agents, whyChooseData, processStepsData }
       </div>
 
       {/* ── Process Steps ── */}
-      <div ref={stepsSection.ref} className="max-w-5xl mx-auto px-4 mt-32 text-center w-full pb-10">
+      <div ref={stepsRef} className="max-w-5xl mx-auto px-4 mt-32 text-center w-full pb-10">
         <p
           className="text-sm md:text-base font-semibold tracking-widest text-[#e02b20] uppercase mb-2"
           style={{
-            opacity: stepsSection.inView ? 1 : 0,
-            transform: stepsSection.inView ? 'translateY(0)' : 'translateY(20px)',
+            opacity: stepsInView ? 1 : 0,
+            transform: stepsInView ? 'translateY(0)' : 'translateY(20px)',
             transition: 'opacity 0.5s ease, transform 0.5s ease',
           }}
         >
@@ -226,8 +216,8 @@ export default function SalerService({ agents, whyChooseData, processStepsData }
         <h3
           className="text-2xl md:text-4xl font-extrabold text-zinc-900 mb-20 tracking-tight"
           style={{
-            opacity: stepsSection.inView ? 1 : 0,
-            transform: stepsSection.inView ? 'translateY(0)' : 'translateY(20px)',
+            opacity: stepsInView ? 1 : 0,
+            transform: stepsInView ? 'translateY(0)' : 'translateY(20px)',
             transition: 'opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s',
           }}
         >
@@ -237,13 +227,13 @@ export default function SalerService({ agents, whyChooseData, processStepsData }
         <div className="relative flex flex-col md:flex-row justify-between items-start">
           <div className="hidden md:block absolute top-[2.5rem] left-[15%] right-[15%] h-[1px] bg-gradient-to-r from-transparent via-zinc-200 to-transparent -z-10"></div>
 
-          {processStepsList.map((step: any, i: number) => (
+          {processStepsList.map((step: { num: number; iconName: string; title: string; desc: string }, i: number) => (
             <div
               key={step.num}
               className={`flex flex-col items-center w-full md:w-1/3 ${i < 2 ? 'mb-12 md:mb-0' : ''} relative bg-white group hover:-translate-y-2 transition-all duration-300`}
               style={{
-                opacity: stepsSection.inView ? 1 : 0,
-                transform: stepsSection.inView ? 'translateY(0) scale(1)' : 'translateY(35px) scale(0.96)',
+                opacity: stepsInView ? 1 : 0,
+                transform: stepsInView ? 'translateY(0) scale(1)' : 'translateY(35px) scale(0.96)',
                 transition: `opacity 0.55s ease ${0.2 + i * 0.15}s, transform 0.55s ease ${0.2 + i * 0.15}s`,
               }}
             >

@@ -3,7 +3,6 @@ import "./globals.css";
 import { Prompt } from "next/font/google";
 import type { Metadata } from "next";
 import Script from "next/script";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";

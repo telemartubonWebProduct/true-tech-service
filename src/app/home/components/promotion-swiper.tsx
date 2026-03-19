@@ -58,6 +58,14 @@ export default function PromotionSwiper({ packages = [] }: PromotionSwiperProps)
   // Fallback to static tabs if no dynamic ones yet, but we'll map dynamically
   const activeCategory = categories[tabIndex];
 
+  const getCategoryLink = (catName?: string) => {
+    if (!catName) return "#";
+    if (catName.includes("บ้าน")) return "/boardband";
+    if (catName.includes("รายเดือน")) return "/monthly";
+    if (catName.includes("เติมเงิน")) return "/topup";
+    return `/packages/${catName.toLowerCase().replace(/\s+/g, '-')}`;
+  };
+
   const filteredPackages = useMemo(() => {
     if (!activeCategory) return [];
     return packages
@@ -132,7 +140,7 @@ export default function PromotionSwiper({ packages = [] }: PromotionSwiperProps)
             </Box>
             
             <Button
-              href={`/packages/${activeCategory?.slug || ""}`} 
+              href={getCategoryLink(activeCategory?.name)} 
               endIcon={<ArrowForwardIosIcon sx={{ fontSize: "12px !important", ml: -0.5 }} />}
               sx={{
                 display: { xs: "flex", md: "none" },
@@ -191,7 +199,7 @@ export default function PromotionSwiper({ packages = [] }: PromotionSwiperProps)
             </Tabs>
 
             <Button
-              href={`/packages/${activeCategory?.slug || ""}`} 
+              href={getCategoryLink(activeCategory?.name)} 
               endIcon={<ArrowForwardIosIcon sx={{ fontSize: "14px !important" }} />}
               sx={{
                 display: { xs: "none", md: "flex" },
