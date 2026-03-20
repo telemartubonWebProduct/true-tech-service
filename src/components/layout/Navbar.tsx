@@ -68,7 +68,7 @@ export default function Navbar({ siteSettings }: { siteSettings?: any }) {
             </Link>
           </div>
 
-          <div className="mt-1 sm:mt-0 flex items-center">
+          {/* <div className="mt-1 sm:mt-0 flex items-center">
             <Link
               href="https://www.telemartmanagement.com/"
               className="text-xs sm:text-sm font-semibold text-slate-700 hover:text-red-500 flex items-center gap-1 transition-colors"
@@ -78,7 +78,7 @@ export default function Navbar({ siteSettings }: { siteSettings?: any }) {
             >
               <span>เข้าสู่ระบบ</span>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </motion.div>
