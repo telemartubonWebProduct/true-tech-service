@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "แพ็กเกจซิมรายเดือน ทรู ดีแทค | Telemart Ubon",
     description: "เปิดเบอร์ใหม่ ย้ายค่ายเบอร์เดิม เน็ตไม่อั้น โทรฟรี ราคาเริ่มต้น 199 บาท",
-    url: "https://telemart-ubon.com/monthly",
+    url: "https://www.truetechservice.com/monthly",
   },
   twitter: {
     title: "แพ็กเกจซิมรายเดือน ทรู ดีแทค | Telemart Ubon",
     description: "เปิดเบอร์ใหม่ ย้ายค่ายเบอร์เดิม เน็ตไม่อั้น โทรฟรี ราคาเริ่มต้น 199 บาท",
   },
-  alternates: { canonical: "https://telemart-ubon.com/monthly" },
+  alternates: { canonical: "https://www.truetechservice.com/monthly" },
   robots: {
     index: true, follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },

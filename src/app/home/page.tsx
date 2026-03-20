@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Telemart Ubon | อินเทอร์เน็ตทรู ดีแทค เน็ตบ้าน มือถือ",
     description: "บริการเน็ตบ้าน ซิมมือถือ และโซล่าเซลล์ครบวงจร โดยทีมผู้เชี่ยวชาญ Telemart Ubon สมัครง่าย ติดตั้งรวดเร็ว",
-    url: "https://telemart-ubon.com",
+    url: "https://www.truetechservice.com/home",
     siteName: "Telemart Ubon",
     locale: "th_TH",
     type: "website",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description: "บริการเน็ตบ้านและซิมมือถือ ทรู ดีแทค ราคาพิเศษ สมัครง่าย ติดตั้งรวดเร็ว",
     images: ["/assets/banner/hero-banner.jpg"],
   },
-  alternates: { canonical: "https://telemart-ubon.com/home" },
+  alternates: { canonical: "https://www.truetechservice.com/home" },
   robots: {
     index: true, follow: true,
     googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 },
@@ -56,7 +56,7 @@ export default async function HomePage() {
     "@type": "LocalBusiness",
     name: "Telemart Ubon",
     description: "ให้บริการ เน็ตบ้านทรูออนไลน์ ซิมมือถือทรู-ดีแทค โซล่าเซลล์ และอุปกรณ์ไอที ราคาพิเศษในอุบลราชธานี",
-    url: "https://telemart-ubon.com",
+    url: "https://www.truetechservice.com/home",
     telephone: siteSettings?.phone || "+66-",
     address: { "@type": "PostalAddress", addressLocality: "อุบลราชธานี", addressRegion: "อุบลราชธานี", addressCountry: "TH" },
     openingHoursSpecification: [{
@@ -64,7 +64,7 @@ export default async function HomePage() {
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       opens: "08:00", closes: "20:00",
     }],
-    image: siteSettings?.logoUrl || "https://telemart-ubon.com/assets/banner/hero-banner.jpg",
+    image: siteSettings?.logoUrl || "https://www.truetechservice.com/assets/banner/hero-banner.jpg",
     sameAs: [],
   };
 

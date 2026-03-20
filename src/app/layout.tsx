@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   description:
     "Telemart Ubon ให้บริการ เน็ตบ้านทรูออนไลน์ ซิมมือถือทรู-ดีแทค แพ็กเกจความบันเทิง โซล่าเซลล์ครบวงจร และอุปกรณ์ไอที ราคาพิเศษ สมัครง่าย บริการถึงที่ ติดต่อทีมผู้เชี่ยวชาญได้ตลอด 24 ชั่วโมง",
-  metadataBase: new URL("https://telemart-ubon.com"),
+  metadataBase: new URL("https://truetechservice.com"),
   openGraph: {
     siteName: "Telemart Ubon",
     locale: "th_TH",

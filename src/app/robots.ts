@@ -7,6 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/dashboard/', '/login/'],
     },
-    sitemap: 'https://telemart-ubon.com/sitemap.xml',
+    sitemap: 'https://www.truetechservice.com/sitemap.xml',
+    // sitemap: 'https://telemart-ubon.com/sitemap.xml',
   }
 }

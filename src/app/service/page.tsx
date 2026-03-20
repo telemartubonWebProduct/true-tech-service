@@ -12,13 +12,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ติดต่อเรา | Telemart Ubon",
     description: "ติดต่อทีมงาน Telemart Ubon สอบถามข้อมูลเน็ตบ้าน ซิมมือถือ โซล่าเซลล์",
-    url: "https://telemart-ubon.com/service",
+    url: "https://www.truetechservice.com/service",
   },
   twitter: {
     title: "ติดต่อเรา | Telemart Ubon",
     description: "ติดต่อทีมงาน Telemart Ubon สอบถามข้อมูลเน็ตบ้าน ซิมมือถือ โซล่าเซลล์",
   },
-  alternates: { canonical: "https://telemart-ubon.com/service" },
+  alternates: { canonical: "https://www.truetechservice.com/service" },
   robots: {
     index: true, follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },

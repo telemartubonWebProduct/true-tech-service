@@ -24,13 +24,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "โซล่าเซลล์ พลังงานแสงอาทิตย์ ติดตั้งครบวงจร | Telemart Ubon",
     description: "ติดตั้งโซล่าเซลล์ครบวงจร ประหยัดค่าไฟสูงสุด 80% รับประกันยาวนาน",
-    url: "https://telemart-ubon.com/wEnergy",
+    url: "https://www.truetechservice.com/wEnergy",
   },
   twitter: {
     title: "โซล่าเซลล์ พลังงานแสงอาทิตย์ | Telemart Ubon",
     description: "ติดตั้งโซล่าเซลล์ครบวงจร ประหยัดค่าไฟสูงสุด 80% รับประกันยาวนาน",
   },
-  alternates: { canonical: "https://telemart-ubon.com/wEnergy" },
+  alternates: { canonical: "https://www.truetechservice.com/wEnergy" },
   robots: {
     index: true, follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },

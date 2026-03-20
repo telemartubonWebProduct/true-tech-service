@@ -17,13 +17,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "แพ็กเกจเน็ตบ้าน ทรูออนไลน์ ไฟเบอร์ | Telemart Ubon",
     description: "เปรียบเทียบแพ็กเกจเน็ตบ้านทรูออนไลน์ ไฟเบอร์ ราคาเริ่มต้น 399 บาท สมัครง่าย ติดตั้งฟรี",
-    url: "https://telemart-ubon.com/boardband",
+    url: "https://www.truetechservice.com/boardband",
   },
   twitter: {
     title: "แพ็กเกจเน็ตบ้าน ทรูออนไลน์ | Telemart Ubon",
     description: "เปรียบเทียบแพ็กเกจเน็ตบ้านทรูออนไลน์ ไฟเบอร์ ราคาเริ่มต้น 399 บาท สมัครง่าย ติดตั้งฟรี",
   },
-  alternates: { canonical: "https://telemart-ubon.com/boardband" },
+  alternates: { canonical: "https://www.truetechservice.com/boardband" },
   robots: {
     index: true, follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },

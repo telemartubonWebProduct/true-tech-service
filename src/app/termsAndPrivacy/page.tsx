@@ -12,13 +12,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ข้อตกลงและเงื่อนไข | นโยบายความเป็นส่วนตัว | Telemart Ubon",
     description: "ข้อตกลงและนโยบายความเป็นส่วนตัว สอดคล้องกับ PDPA พ.ศ. 2562",
-    url: "https://telemart-ubon.com/termsAndPrivacy",
+    url: "https://www.truetechservice.com/termsAndPrivacy",
   },
   twitter: {
     title: "ข้อตกลงและเงื่อนไข | Telemart Ubon",
     description: "ข้อตกลงและนโยบายความเป็นส่วนตัว สอดคล้องกับ PDPA พ.ศ. 2562",
   },
-  alternates: { canonical: "https://telemart-ubon.com/termsAndPrivacy" },
+  alternates: { canonical: "https://www.truetechservice.com/termsAndPrivacy" },
   robots: {
     index: true, follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },

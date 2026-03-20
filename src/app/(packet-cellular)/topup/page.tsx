@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "แพ็กเกจซิมเติมเงิน ทรู ดีแทค | Telemart Ubon",
     description: "ซิมเติมเงิน เน็ตไม่อั้น โทรคุ้ม ราคาประหยัด สมัครง่าย",
-    url: "https://telemart-ubon.com/topup",
+    url: "https://www.truetechservice.com/topup",
   },
   twitter: {
     title: "แพ็กเกจซิมเติมเงิน ทรู ดีแทค | Telemart Ubon",
     description: "ซิมเติมเงิน เน็ตไม่อั้น โทรคุ้ม ราคาประหยัด สมัครง่าย",
   },
-  alternates: { canonical: "https://telemart-ubon.com/topup" },
+  alternates: { canonical: "https://www.truetechservice.com/topup" },
   robots: {
     index: true, follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
