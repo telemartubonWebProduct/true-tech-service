@@ -186,6 +186,11 @@ export default function ContactPageClient() {
               {status === "success" && <p className="text-green-500">Message sent successfully!</p>}
               {status === "error" && <p className="text-red-500">Failed to send message. Try again later.</p>}
 
+              <div className="text-xs text-gray-500 mt-4 mb-4">
+                ข้อมูลที่คุณกรอกจะถูกใช้เพื่อการติดต่อกลับและให้บริการโดย บริษัท เทเลมาร์ท คอมมิวนิเคชั่น จำกัด (ตัวแทนจำหน่ายอย่างเป็นทางการ) เท่านั้น 
+                การกดส่งข้อความถือว่าคุณยอมรับ <Link href="/termsAndPrivacy" className="text-blue-600 hover:underline">นโยบายความเป็นส่วนตัว</Link> ของเรา
+              </div>
+
               <div className="w-full flex justify-end items-center">
                 <Button
                   type="submit"

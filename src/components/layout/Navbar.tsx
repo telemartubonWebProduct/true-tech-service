@@ -78,15 +78,16 @@ export default function Navbar({ siteSettings }: { siteSettings?: any }) {
 
       <nav className="relative w-full bg-white text-black">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-10">
-          <Link href="/home" className="flex items-center" aria-label="Telemart Ubon หน้าแรก">
+          <Link href="/home" className="flex flex-col items-start justify-center" aria-label="Telemart Ubon หน้าแรก">
             <Image
-              src={siteSettings?.logoUrl || "/logo.png"}
-              alt="Telemart Ubon Logo – เน็ตบ้านและมือถือ ทรู ดีแทค"
+              src={siteSettings?.logoUrl || "/logo.webp"}
+              alt="Telemart Ubon Logo – ตัวแทนจำหน่ายอย่างเป็นทางการ"
               width={140}
               height={45}
               priority
               className="object-contain"
             />
+            <span className="text-[10px] text-gray-500 font-medium tracking-tight mt-0.5">ตัวแทนจำหน่ายอย่างเป็นทางการ</span>
           </Link>
 
           <div className="hidden flex-1 items-center justify-end space-x-8 md:flex">

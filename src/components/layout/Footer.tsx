@@ -148,6 +148,10 @@ const Footer = ({ siteSettings }: { siteSettings?: any }) => {
           </Grid>
         </Grid>
         <Box className="mt-8 border-t border-gray-700 pt-4 text-center">
+          <Typography variant="body2" className="mb-4 text-gray-400 text-xs sm:text-sm max-w-4xl mx-auto leading-relaxed">
+            ข้อจำกัดความรับผิดชอบ (Disclaimer): เว็บไซต์นี้ดำเนินการโดย บริษัท เทเลมาร์ท คอมมิวนิเคชั่น จำกัด ซึ่งเป็นตัวแทนจำหน่ายที่ได้รับการแต่งตั้งอย่างเป็นทางการ (Authorized Dealer) 
+            เว็บไซต์นี้ไม่ใช่เว็บไซต์หลักหรือบริษัทในเครือบริษัท ทรู คอร์ปอเรชั่น จำกัด (มหาชน) ทางเราจัดทำเว็บไซต์นี้ขึ้นเพื่อวัตถุประสงค์ในการนำเสนอแพ็กเกจและบริการติดตั้งเท่านั้น
+          </Typography>
           <Typography variant="body2">
             &copy; {new Date().getFullYear()} Telemart Communication co.,ltd.
             copyright all. right reserved reserved.
