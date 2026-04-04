@@ -6,20 +6,30 @@ export default function N8nChat({ webhookUrl }: { webhookUrl: string }) {
   useEffect(() => {
     if (!webhookUrl) return;
 
-    // Manually inject the CSS to bypass Next.js / Turbopack CSS parsing errors for vendor stylesheets.
-    const cssId = 'n8n-chat-css';
-    if (!document.getElementById(cssId)) {
-        const link = document.createElement('link');
-        link.id = cssId;
-        link.rel = 'stylesheet';
-        link.href = 'https://cdn.jsdelivr.net/npm/@n8n/chat/style.css';
-        document.head.appendChild(link);
+    const cssId = "n8n-chat-css";
+    const cssHref = "https://cdn.jsdelivr.net/npm/@n8n/chat@1.14.0/dist/style.css";
+    const existingLink = document.getElementById(cssId) as HTMLLinkElement | null;
+
+    if (existingLink) {
+      if (existingLink.href !== cssHref) {
+        existingLink.href = cssHref;
+      }
+    } else {
+      const link = document.createElement("link");
+      link.id = cssId;
+      link.rel = "stylesheet";
+      link.href = cssHref;
+      document.head.appendChild(link);
     }
 
-    // Dynamically import createChat since it relies on window/document (client side only)
+    let cancelled = false;
+    let chatApp: { unmount?: () => void } | undefined;
+
     import("@n8n/chat")
       .then(({ createChat }) => {
-        createChat({
+        if (cancelled) return;
+
+        chatApp = createChat({
           webhookUrl,
           initialMessages: [
             "สวัสดีครับ! 👋",
@@ -27,7 +37,7 @@ export default function N8nChat({ webhookUrl }: { webhookUrl: string }) {
           ],
           i18n: {
             en: {
-               title: "สวัสดีครับ! 👋",
+              title: "สวัสดีครับ! 👋",
               subtitle: "เริ่มต้นการสนทนาได้เลยครับ เราพร้อมช่วยเหลือคุณตลอด 24 ชั่วโมงครับ",
               footer: "",
               getStarted: "สนทนาใหม่",
@@ -48,6 +58,11 @@ export default function N8nChat({ webhookUrl }: { webhookUrl: string }) {
       .catch((err) => {
         console.error("Failed to load n8n chat:", err);
       });
+
+    return () => {
+      cancelled = true;
+      chatApp?.unmount?.();
+    };
   }, [webhookUrl]);
 
   return null;
