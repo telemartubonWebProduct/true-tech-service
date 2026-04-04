@@ -35,7 +35,7 @@ export default async function HomeContentPage() {
     homeSections.find((s: { sectionKey: string }) => s.sectionKey === key) ?? null;
 
   // Serialise dates for client components
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   
   const s = (data: any) => JSON.parse(JSON.stringify(data));
 
   return (
