@@ -23,6 +23,7 @@ export default function N8nChat({ webhookUrl }: { webhookUrl: string }) {
               footer: "",
               getStarted: "สนทนาใหม่",
               inputPlaceholder: "พิมพ์คำถามของคุณ..",
+              closeButtonTooltip: "ปิด",
             },
             th: {
               title: "สวัสดีครับ! 👋",
@@ -30,6 +31,7 @@ export default function N8nChat({ webhookUrl }: { webhookUrl: string }) {
               footer: "",
               getStarted: "สนทนาใหม่",
               inputPlaceholder: "พิมพ์คำถามของคุณ..",
+              closeButtonTooltip: "ปิด",
             },
           },
         });
