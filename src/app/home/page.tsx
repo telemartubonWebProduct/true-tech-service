@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import HomePageClient from "./HomePageClient";
 import { prisma } from "@/src/lib/prisma";
 
-export const dynamic = "force-dynamic";
+
 
 export const metadata: Metadata = {
   title: "Telemart Ubon | อินเทอร์เน็ตทรู ดีแทค เน็ตบ้าน มือถือ โซล่าเซลล์ อุบลราชธานี",

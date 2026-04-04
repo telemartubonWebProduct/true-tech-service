@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { createServerSupabaseClient } from "@/src/lib/supabase-server";
 import DashboardSidebar from "./components/DashboardSidebar";
 
-export const dynamic = "force-dynamic";
+
 
 export const metadata: Metadata = {
   title: "Dashboard | Telemart Admin",

@@ -19,7 +19,7 @@ const prompt = Prompt({
   variable: "--font-prompt",
 });
 
-export const dynamic = "force-dynamic";
+
 
 export const metadata: Metadata = {
   title: {
