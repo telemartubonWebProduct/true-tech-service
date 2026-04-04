@@ -19,6 +19,8 @@ const prompt = Prompt({
   variable: "--font-prompt",
 });
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: {
     default: "Telemart Ubon | เน็ตบ้าน มือถือ โซล่าเซลล์",
