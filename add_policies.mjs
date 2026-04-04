@@ -22,7 +22,7 @@ async function run() {
   for (const query of queries) {
     try {
       await client.query(query);
-      console.log("Success:", query);
+      
     } catch (e) {
       console.error("Error on:", query, e.message);
     }

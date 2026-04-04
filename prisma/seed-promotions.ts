@@ -112,7 +112,7 @@ async function main() {
     }
   }
 
-  console.log(`Successfully seeded ${totalSeeded} promotions.`)
+
 }
 
 main()

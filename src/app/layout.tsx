@@ -10,6 +10,7 @@ import Navbar from "../components/layout/Navbar";
 import { ToastContainer } from "react-toastify";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 
+
 // 1) เรียกใช้ฟอนต์ Prompt จาก next/font/google
 const prompt = Prompt({
   subsets: ["thai"],
@@ -44,6 +45,7 @@ import ScrollToTop from "../components/layout/ScrollToTop";
 import CookieConsent from "../components/layout/CookieConsent";
 import { prisma } from "@/src/lib/prisma";
 import { SiteSettingsProvider } from "@/src/context/SiteSettingsContext";
+import N8nChat from "../components/N8nChat";
 
 export default async function RootLayout({
   children,
@@ -90,6 +92,7 @@ export default async function RootLayout({
                 <Footer siteSettings={siteSettings} />
               </div>
               <ToastContainer position="bottom-right" theme="dark" />
+              <N8nChat webhookUrl={process.env.N8N_WEBHOOK_URL || ""} />
             </ThemeProvider>
           </AppRouterCacheProvider>
         </SiteSettingsProvider>

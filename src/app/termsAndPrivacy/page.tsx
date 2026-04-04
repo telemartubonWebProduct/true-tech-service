@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import TermsAndPrivacyClient from "./TermsAndPrivacyClient";
 
+
 export const metadata: Metadata = {
   title: "ข้อตกลงและเงื่อนไข | นโยบายความเป็นส่วนตัว",
   description:
