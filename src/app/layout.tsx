@@ -49,6 +49,10 @@ import { prisma } from "@/src/lib/prisma";
 import { SiteSettingsProvider } from "@/src/context/SiteSettingsContext";
 import N8nChat from "../components/N8nChat";
 
+// Every page is redirected to www.truegetherth.com (next.config.ts), so nothing
+// is rendered ahead of time and the build does not need the database.
+export const dynamic = "force-dynamic";
+
 export default async function RootLayout({
   children,
 }: {
